@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafetería Hello Kitty</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #75606a;
+            background-color: #fff5f8;
+            background-image:
+                radial-gradient(circle at 20% 20%, #f8d7e5 0 12px, transparent 13px),
+                radial-gradient(circle at 80% 30%, #dcd2f2 0 10px, transparent 11px),
+                radial-gradient(circle at 30% 80%, #d7eee7 0 11px, transparent 12px);
+            background-size: 150px 150px;
+        }
+
+        header {
+            background: #f6c7da;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .titulo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .titulo img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 23px;
+            color: #c77d9b;
+            margin: 5px;
+        }
+
+        h2 {
+            font-size: 19px;
+            color: #c77d9b;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        header p {
+            font-size: 13px;
+            margin: 5px;
+        }
+
+        nav {
+            background: #d8c5e8;
+            padding: 9px;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #80636f;
+        }
+
+        main {
+            width: 75%;
+            max-width: 850px;
+            margin: 18px auto;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 14px;
+            margin-bottom: 14px;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px #dfc1ce;
+        }
+
+        section p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .decoracion {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            background: #c9b7e8;
+            color: white;
+            padding: 7px;
+        }
+
+        td {
+            background: #fff4f8;
+            padding: 7px;
+            text-align: center;
+            border: 1px solid #efd8e1;
+        }
+
+        tr:hover td {
+            background: #fce3ed;
+        }
+
+        form {
+            width: 85%;
+            margin: auto;
+            font-size: 13px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 7px;
+            border: 2px solid #e8c5d5;
+            border-radius: 7px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 8px 17px;
+            border: 0;
+            border-radius: 20px;
+            background: #b9d8d0;
+            color: #5f7770;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #a4cec1;
+        }
+
+        .btn-eliminar {
+            background: #f3bfd0;
+            color: #865568;
+        }
+
+        .btn-eliminar:hover {
+            background: #eaa8bf;
+        }
+
+        #mensajeExito, #mensajeError {
+            margin: 15px auto;
+            padding: 10px;
+            width: 85%;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        #mensajeExito {
+            background: #e5f3ed;
+            color: #527568;
+        }
+
+        #mensajeError {
+            background: #fde5ec;
+            color: #a34d68;
+        }
+
+        .enlaces {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .enlaces a {
+            display: inline-block;
+            min-width: 125px;
+            padding: 8px 12px;
+            margin: 3px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #80636f;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1.7;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .enlaces a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px #dfc1ce;
+        }
+
+        .instagram { background: #f5c6d9; }
+        .facebook { background: #d4e5ff; }
+        .tiktok { background: #e8d8f5; }
+        .whatsapp { background: #c8e8d7; }
+
+        footer {
+            background: #f6c7da;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .titulo { flex-direction: column; gap: 5px; }
+            .titulo img { width: 75px; height: 75px; }
+            h1 { font-size: 20px; }
+            main { width: 90%; }
+            section { padding: 12px; }
+            table, form, #mensajeExito, #mensajeError { width: 100%; }
+            table { font-size: 12px; }
+            th, td { padding: 6px 3px; }
+            .enlaces a { width: 80%; }
+            nav a { margin: 4px; font-size: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="titulo">
+        <img src="kitty.jpg" alt="Logo de Cafetería Hello Kitty">
+        <div>
+            <h1>🎀 Cafetería Hello Kitty 🎀</h1>
+            <p>Alimentos, bebidas y postres 💗</p>
+        </div>
+    </div>
+    <div class="decoracion">♡ 🎀 ♡ 🌸 ♡ 🎀 ♡</div>
+</header>
+
+<nav>
+    <a href="#inicio">🏠 Inicio</a>
+    <a href="#menu">🍓 Menú</a>
+    <a href="#contacto">💌 Contacto</a>
+    <a href="#eliminar">🗑️ Eliminar registro</a>
+    <a href="#redes">🌸 Redes sociales</a>
+</nav>
+
+<main>
+    <section id="inicio">
+        <div class="decoracion">🎀 🌸 💗 🌸 🎀</div>
+        <h2>💗 Bienvenidos 💗</h2>
+        <p style="text-align:center">
+            Bienvenidos a nuestra <strong>Cafetería Hello Kitty</strong>.
+            Aquí encontrarás frappés, waffles, crepas, boneless y mucho más. 🎀
+        </p>
+        <p style="text-align:center">¡Ven a disfrutar de un momento dulce y especial! 🌸</p>
+    </section>
+
+    <section id="menu">
+        <h2>🎀 Nuestro Menú 🎀</h2>
+        <table>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+            <tr><td>☕ Frappé de Café</td><td>$45</td></tr>
+            <tr><td>🍵 Frappé de Matcha</td><td>$50</td></tr>
+            <tr><td>🍓 Frappé de Fresa</td><td>$45</td></tr>
+            <tr><td>☕ Capuchino</td><td>$20</td></tr>
+            <tr><td>🍫 Chocolate Caliente</td><td>$30</td></tr>
+            <tr><td>🧇 Waffles con Fresas</td><td>$45</td></tr>
+        </table>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <h2>💌 Contacto 💌</h2>
+
+        <form id="formulario" action="backend.php" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+
+            <button type="submit" name="guardar">🎀 Enviar 🎀</button>
+        </form>
+    </section>
+
+    <!-- ELIMINAR REGISTROS -->
+    <section id="eliminar">
+        <h2>🗑️ Eliminar Registro 🗑️</h2>
+        <p style="text-align:center">
+            Si deseas eliminar un contacto registrado, escribe su correo electrónico. 💗
+        </p>
+
+        <form action="backend.php" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este registro?')">
+            <label for="correoEliminar">Correo electrónico:</label>
+            <input type="email" id="correoEliminar" name="correoEliminar" placeholder="Escribe el correo" required>
+
+            <button type="submit" name="eliminar" class="btn-eliminar">💗 Eliminar registro 💗</button>
+        </form>
+    </section>
+
+    <!-- REDES SOCIALES -->
+    <section id="redes">
+        <div class="decoracion">🎀 💗 🌸 💗 🎀</div>
+        <h2>🌸 ¡Síguenos en nuestras redes! 🌸</h2>
+        <p style="text-align:center">
+            💗 ¡Forma parte de la familia Hello Kitty! 💗<br><br>
+            Síguenos para conocer nuestros productos, promociones, nuevos postres y sorpresas. 🎀
+        </p>
+        <div class="enlaces">
+            <a class="instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">📸 Instagram<br>@cafeteriahellokitty</a>
+            <a class="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">💙 Facebook<br>Cafetería Hello Kitty</a>
+            <a class="tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">🎵 TikTok<br>@cafeteriahellokitty</a>
+            <a class="whatsapp" href="https://wa.me/5210000000000" target="_blank" rel="noopener noreferrer">💬 WhatsApp<br>¡Haz tu pedido!</a>
+        </div>
+        <p style="text-align:center; font-size:11px">🎀 ¡Gracias por apoyar a nuestra cafetería! 🎀</p>
+    </section>
+</main>
+
+<footer>
+    <p>🎀 Cafetería Hello Kitty © 2026 🎀</p>
+    <p>🌸 Hecho con amor y tonos pastel 🌸</p>
+</footer>
+
+<script>
+// VALIDAR FORMULARIO DE CONTACTO
+document.getElementById("formulario").addEventListener("submit", function(e) {
+    let nombre = document.getElementById("nombre").value.trim();
+    let correo = document.getElementById("correo").value.trim();
+    let mensaje = document.getElementById("mensaje").value.trim();
+
+    if (nombre === "" || correo === "" || mensaje === "") {
+        e.preventDefault();
+        alert("Por favor, completa todos los campos.");
+    }
+});
+</script>
+
+</body>
+</html>
